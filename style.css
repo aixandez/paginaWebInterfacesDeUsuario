@@ -1,0 +1,265 @@
+:root {
+  --negro: #0a0a0a;
+  --blanco: #f5f5f0;
+  --rojo: #c0392b;
+  --gris: #1a1a1a;
+  --texto-suave: #888;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--negro);
+  color: var(--blanco);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 8vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(192,57,43,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-linea {
+  width: 60px;
+  height: 2px;
+  background: var(--rojo);
+  margin-bottom: 2rem;
+  animation: expandir 1s ease forwards;
+}
+
+@keyframes expandir {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(6rem, 16vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  animation: aparecer 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-top: 1.5rem;
+  animation: aparecer 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 8vw;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  animation: parpadeo 2s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ── SOBRE ── */
+.sobre {
+  background: var(--gris);
+  padding: 6rem 8vw;
+  position: relative;
+}
+
+.sobre::before {
+  content: 'AIRBAG';
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 14vw, 12rem);
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+  user-select: none;
+}
+
+.etiqueta {
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 1.5rem;
+}
+
+.sobre h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+
+.sobre p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #b0b0a8;
+  max-width: 600px;
+}
+
+.sobre p + p {
+  margin-top: 1.2rem;
+}
+
+.datos {
+  margin-top: 3rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.dato-item strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--rojo);
+  line-height: 1;
+}
+
+.dato-item span {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+/* ── DISCOGRAFÍA ── */
+.discografia {
+  padding: 6rem 8vw;
+  background: var(--negro);
+}
+
+.discografia h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.disco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.disco-card {
+  background: var(--gris);
+  border: 1px solid #222;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.disco-card:hover {
+  border-color: var(--rojo);
+  transform: translateY(-5px);
+}
+
+.disco-card .portada {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.disco-card .portada-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #1e1e1e;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.disco-card .portada-placeholder span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: rgba(255,255,255,0.08);
+}
+
+.disco-info {
+  padding: 1.2rem 1.4rem 1.5rem;
+}
+
+.disco-info .anio {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 0.3rem;
+}
+
+.disco-info h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.disco-info p {
+  font-size: 0.82rem;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--gris);
+  border-top: 1px solid #222;
+  padding: 2.5rem 8vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer .marca {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
